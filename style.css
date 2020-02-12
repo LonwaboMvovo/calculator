@@ -3,23 +3,26 @@ body {
     text-align: center;
     font-size: 2em;
     font-family: cursive;
-}
-
-h1 {
-    margin: 10px;
+    margin: 0px;
+    padding-top: 100px;
 }
 
 #answer {
-    margin: 10px;
+    margin: 0px;
     border: 2px solid black;
+    font-size: 1.4em;
+    text-align: center;
+    font-family: cursive;
+    cursor: default;
 }
 
 .container1 {
-    font-size: 1.4em;
+    font-size: 1em;
     height: 100px;
     display: grid;
     grid-template-columns: 380px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .container2 {
