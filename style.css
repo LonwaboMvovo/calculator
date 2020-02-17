@@ -4,7 +4,7 @@ body {
     font-size: 2em;
     font-family: cursive;
     margin: 0px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 #answer {
@@ -57,12 +57,11 @@ button:hover {
     cursor: pointer;
 }
 
-/* How to remove blue box when button is clicked */
 button:active {
     background-color: rgb(210, 115, 248);
     border: none;
 }
 
-#equals {
-    width: 180px;
+#equal {
+    box-shadow: 0px 0px 8px 1px inset gray;
 }
