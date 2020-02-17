@@ -1,6 +1,8 @@
 //Variables for HTML elements:
 const numbers = document.querySelectorAll('.numbers'); //All numbers from HTML file
-const functions = document.querySelectorAll('.functions'); //Plus and minus from HTML file
+// const functions = document.querySelectorAll('.functions'); //Plus and minus from HTML file
+const plus = document.querySelector('#plus'); //Plus from HTML file
+const subtract = document.querySelector('#subtract'); //Subtract from HTML file
 const equal = document.querySelector('#equal'); //Equal from HTML file
 const clear = document.querySelector('#clear'); //Clear from HTML file
 const back = document.querySelector('#back'); //Back from HTML file
@@ -40,17 +42,25 @@ for (let i = 0; i < numbers.length; i++) {
     });
 }
 
-    //Functions:
-for (let i = 0; i < functions.length; i++) {
-    functions[i].addEventListener('click', function() {
-        calculation = calculation.toString(); //Have to change 'calculation' to string because need to check if last character in 'calculation' is not another function and the method used is charAt which needs the variable to be a string
+    //Plus:
+plus.addEventListener('click', function() {
+    calculation = calculation.toString(); //Have to change 'calculation' to string because need to check if last character in 'calculation' is not another function and the method used is charAt which needs the variable to be a string
         if (calculation.charAt(calculation.length - 1) !== '+' && calculation !== '' && calculation.charAt(calculation.length - 1) !== '-' && calculation.charAt(calculation.length - 1) !== '/' && calculation.charAt(calculation.length - 1) !== '*' && userCalculation.length < 13) { //Function not added if it won't fit in answer display which is 13 characters(userCalculation.length < 13), if the last character in 'calculation' is not a function as well(calculation.charAt(calculation.length - 1) !== '+') and if there's no value for 'calculation' yet(calculation !== '')
-            calculation += this.textContent; //Adds the function of the button clicked to 'calculation'
-            userCalculation += this.textContent; //Adds the function of the button clicked to 'userCalculation'
+            calculation += '+'; //Adds the function of the button clicked to 'calculation'
+            userCalculation += '+'; //Adds the function of the button clicked to 'userCalculation'
             answer.value = userCalculation; //Shows userCalculation in 'answer'
         }
-    })
-}
+})
+
+    //Subtract:
+subtract.addEventListener('click', function() {
+    calculation = calculation.toString(); //Have to change 'calculation' to string because need to check if last character in 'calculation' is not another function and the method used is charAt which needs the variable to be a string
+        if (calculation.charAt(calculation.length - 1) !== '+' && calculation !== '' && calculation.charAt(calculation.length - 1) !== '-' && calculation.charAt(calculation.length - 1) !== '/' && calculation.charAt(calculation.length - 1) !== '*' && userCalculation.length < 13) { //Function not added if it won't fit in answer display which is 13 characters(userCalculation.length < 13), if the last character in 'calculation' is not a function as well(calculation.charAt(calculation.length - 1) !== '+') and if there's no value for 'calculation' yet(calculation !== '')
+            calculation += '-'; //Adds the function of the button clicked to 'calculation'
+            userCalculation += '-'; //Adds the function of the button clicked to 'userCalculation'
+            answer.value = userCalculation; //Shows userCalculation in 'answer'
+        }
+})
 
     //Equal:
 equal.addEventListener('click', function() {
@@ -300,7 +310,6 @@ document.addEventListener('keydown', function (key) {
     }
 })
 
-//make plus and minus their own thing 
 //when a number is clicked and equal had just been pressed it must clear answer and calculations
 //make initial calculation value equal zero
 //make error messages for when someone wants to divide by zero
