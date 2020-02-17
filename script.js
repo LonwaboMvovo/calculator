@@ -29,11 +29,27 @@ const canAddBracket = () => {
     }
     return open > close
 }
+const undefinedBoi = () => {
+    if (userCalculation === 'Undefined boiiiii') {
+        calculation = ''; //Clears 'calculation'
+        userCalculation = ''; //Clears 'userCalculation'
+        answer.value = calculation; //Shows userCalculation in 'answer'
+    }
+}
+const Ans = () => {
+    if (userCalculation === 'Ans') {
+        calculation = ''; //Clears 'calculation'
+        userCalculation = ''; //Clears 'userCalculation'
+        answer.value = calculation; //Shows userCalculation in 'answer'
+    }
+}
 
 //Mouse Click Inputs:
     //Numbers:
 for (let i = 0; i < numbers.length; i++) { 
     numbers[i].addEventListener('click', function() { 
+        undefinedBoi();
+        Ans();
         if (userCalculation !== 'Ans' && userCalculation.length < 13) { //Number not added if it won't fit in 'answer'(userCalculation.length < 13); userCalculation is used because the actual calculation could have more than 13 characters and if equal had just been pressed(userCalculation !== 'Ans')
             calculation += this.textContent; //Adds the number of the button clicked to 'calculation'
             userCalculation += this.textContent; //Adds the number of the button clicked to 'userCalculation'
@@ -73,7 +89,13 @@ equal.addEventListener('click', function() {
         calculation = calculation.toString(); //Turns 'calculation' into a string again so that it can be shortend into 13 characters which is needed for the substr method
         calculation = calculation.substr(0,13); //Shortens 'calculation' to 13 characters 
         userCalculation = 'Ans'; //Changes userCalculation to 'Ans' so that if the user would like to make more calculations then that is what will be displayed as a placeholder for the  'calculation' answer
-        answer.value = calculation; //Shows userCalculation in 'answer'
+        if (calculation === 'Infinity') {
+            userCalculation = 'Undefined boiiiii';
+            answer.value = userCalculation; //Shows userCalculation in 'answer'
+        }
+        else {
+            answer.value = calculation; //Shows userCalculation in 'answer'
+        }
         calculation = parseFloat(calculation); //Turns 'calculation' into a floating point number
     }
 })
@@ -310,7 +332,4 @@ document.addEventListener('keydown', function (key) {
     }
 })
 
-//when a number is clicked and equal had just been pressed it must clear answer and calculations
-//make initial calculation value equal zero
-//make error messages for when someone wants to divide by zero
 //add blinking style when any button is clicked to 'answer' to show user that something happened
