@@ -61,7 +61,3 @@ button:active {
     background-color: rgb(210, 115, 248);
     border: none;
 }
-
-#equal {
-    box-shadow: 0px 0px 8px 1px inset gray;
-}
