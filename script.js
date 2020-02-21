@@ -30,13 +30,18 @@ const canAddBracket = () => { //Determines if closed bracket can be added
     }
     return open > close //Returns if the number of open brackets is greater than then number of closed brackets
 }
-const canAddDecimalPoint = () => {
-    stringCalculation();
-    for (let i = calculation.length; i > -1; i--) {
-        if (calculation[i] === '+') {
-            console.log(calculation.slice(i,calculation.length));
+const canAddDecimalPoint = () => { //Checks to see if a decimal point can be added
+    stringCalculation(); //Turns 'calculation into a string
+    let opt = false; //Opt is a variable used to see if there is a variable in a certain position
+    for (let i = calculation.length; opt === false && i > -1; i--) {
+        if (calculation[i] === '+' || calculation[i] === '-' || calculation[i] === '*' || calculation[i] === '/' || calculation[i] === '(' || i === 0) { //Only want numbers in the string
+            opt = true; //Stops for loop
+            if(calculation.slice(i+1,calculation.length).includes('.')) {
+                return false; //If there is a decimal point already in the number then another one will not be able to be added
+            }
         }
     }
+    return true; //Allows decimal point to be added
 }
 const undefinedBoi = () => {
     if (userCalculation === 'Undefined boiiiii') { //If 'userCalculation' is 'Undefined boiiiii' which means the answer was infinity, this function will clear 'calculation' and 'userCalculation'. This function is so that once the user gets an answer that is infinity then it will prohibit them from doing more calculations on it
@@ -148,7 +153,8 @@ const operationRightBracket = () => {
     }
 }
 const operationDecimalPoint = () => {
-    if (userCalculationLess13() && calculation.charAt(calculation.length - 1) !== '(' && calculation.charAt(calculation.length - 1) !== ')' && calculation.charAt(calculation.length - 1) !== '.' && CanAddOperation()) {
+    canAddDecimalPoint();
+    if (canAddDecimalPoint() && userCalculationLess13() && calculation.charAt(calculation.length - 1) !== '(' && calculation.charAt(calculation.length - 1) !== ')' && calculation.charAt(calculation.length - 1) !== '.' && CanAddOperation()) {
         calculation += '.'; //Adds left bracket to 'calculation'
         userCalculation += '.'; //Adds left bracket to 'Useralculation'
         getAnswerUser(); //Shows userCalculation in 'answer'
@@ -233,24 +239,34 @@ document.addEventListener('keypress', function (key) {
         operationEqual();
     }
 
-    //Multiply:
+        //Multiply:
     if (key.keyCode === 42) {
         operationMultiply();
     }
 
-    //Divide:
+        //Divide:
     if (key.keyCode === 47) {
         operationDivide();
     }
     
-    //Plus:
+        //Plus:
     if (key.keyCode === 43) {
         operationPlus();
     }
     
-    //Subtract:
+        //Subtract:
     if (key.keyCode === 45) {
         operationSubtract();
+    }
+
+        //Left Bracket:
+    if (key.keyCode === 40) {
+        operationLeftBracket();
+    }
+
+        //Left Bracket:
+    if (key.keyCode === 41) {
+        operationRightBracket();
     }
 })
 
@@ -267,4 +283,4 @@ document.addEventListener('keydown', function (key) {
     }
 })
 
-//fix point bug. you can add many points to one number which should not be the case
+//Done By Lonwabo Mvovo
