@@ -84,15 +84,16 @@ const operationEqual = () => {
         calculation = eval(calculation); //Evaluates 'calculation' and returns answer
         stringCalculation(); //Turns 'calculation' into a string again so that it can be shortend into 13 characters which is needed for the substr method
         calculation = calculation.substr(0,13); //Shortens 'calculation' to 13 characters 
+        // noZeros();
         userCalculation = 'Ans'; //Changes userCalculation to 'Ans' so that if the user would like to make more calculations then that is what will be displayed as a placeholder for the  'calculation' answer
         if (calculation === 'Infinity') {
             userCalculation = 'Undefined boiiiii';
             getAnswerUser(); //Shows userCalculation in 'answer'
         }
         else {
+            calculation = parseFloat(calculation); //Turns 'calculation' into a floating point number
             getAnswer(); //Shows userCalculation in 'answer'
         }
-        calculation = parseFloat(calculation); //Turns 'calculation' into a floating point number
     }
 }
 const operationClear = () => {
