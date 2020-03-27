@@ -10,6 +10,7 @@ body {
 #answer {
     box-shadow: 0px 0px 8px black;
     margin: 0px;
+    display: block;
     border: 2px solid black;
     font-size: 1.4em;
     text-align: center;
@@ -46,6 +47,7 @@ button {
     width: 80px;
     height: 80px;
     background-color: rgb(222, 140, 255);
+    padding: none;
     border: none;
     font-size: 1.5em;
     font-family: cursive;
@@ -62,6 +64,21 @@ button:active {
     border: none;
 }
 
-/* Still have to make resposive for all devices */
+@media screen and (max-width: 735px) {
+    .container1 {
+        grid-template-columns: 90%;
+    }
+
+    #answer {
+        width: 100%;
+    }
+
+    .container2 {
+        width: 95%;
+        margin: auto;
+        gap: auto;
+        grid-template-columns: 21% 21% 21% 21%;
+    }
+}
 
 /* Done by Lonwabo Mvovo */
