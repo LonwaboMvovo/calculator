@@ -83,6 +83,11 @@ button:active {
     body {
         padding: 20px;
     }
+
+    .container2 {
+        gap: 10px;
+        grid-template-columns: 70px 70px 70px 70px;
+    }
 }
 
 /* Done by Lonwabo Mvovo */
