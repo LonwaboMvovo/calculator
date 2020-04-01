@@ -79,4 +79,10 @@ button:active {
     }
 }
 
+@media screen and (max-width: 380px) {
+    body {
+        padding: 20px;
+    }
+}
+
 /* Done by Lonwabo Mvovo */
